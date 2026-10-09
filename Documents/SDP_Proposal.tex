@@ -1,0 +1,74 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[expansion=false]{microtype}
+\usepackage{xcolor}
+\definecolor{UMass}{rgb}{0.533 0.11 0.11}
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries\color{UMass}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries\color{UMass!85!black}}{\thesubsection}{0.6em}{}
+\usepackage{enumitem}
+\setlist{itemsep=1pt, topsep=3pt}
+\usepackage{booktabs,tabularx,array}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\usepackage{fancyhdr}
+\usepackage[colorlinks=true,linkcolor=UMass,urlcolor=UMass]{hyperref}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small StrideGuard --- Project Proposal}
+\fancyhead[R]{\small UMass Amherst ECE \,|\, SDP27}
+\fancyfoot[C]{\small\thepage}
+\setlength{\headheight}{14pt}
+
+\title{\color{UMass}\textbf{Project Proposal}\\[6pt]\large StrideGuard: A Smart Shin Guard}
+\author{Aamir \quad Diego \quad Alex \quad Nimon \quad Neel}
+\date{October 7, 2026}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\section{Overview}
+StrideGuard is a two piece monitoring tool that details kick performance. Sensors in the boot extract contact and acceleration information, which is processed and streamed to an external device via the micro controller embedded in the shin guard.
+
+\section{Problem Statement}
+There are many variables that go into a perfect shot. At game speed it is impossible to tell where an arrant shot went wrong. StrideGuard reduces uncertainty so that players know exactly what needs to improve between shots. We will prioritize strike surface, power, and stride rhythm. 
+
+\section{Data}
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{@{}P{2.6cm}P{4.2cm}L@{}}
+\toprule
+\textbf{Data} & \textbf{Sensor} & \textbf{Use} \\
+\midrule
+Strike Surface & Peizoresistive Pressure Array &
+For every shot, use data from multiple pressure sensors embedded within the cleat to determine which regions of the foot were used to strike the ball. Helping players improve there  \\
+\addlinespace
+Power & Inertial Measurement Unit & A classifier will distinguish shots from steps; this would involve the pressure sensor data. When we detect a shot we want to record the acceleration of the leg as well as the directional acceleration of the foot. This will show the player how hard they hit the ball. \\
+\addlinespace
+Stride Rhythm  & The same pressure and accelerometer sensors &
+For actions classified as steps leading up to the shot, show the player how they set themselves up for the kick. \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{Form Factor}
+The design will consist of two regions. The sensing interfaces will all be located within the cleat. Two points in the cleat will be chosen for the IMUs and the upper half of the boot will be covered by the peizoresistive pressure array.
+
+The second region is the computation and data processing area embedded into the casing of the shin guard. This will house the custom pcb with any micro controller and digital signal processing hardware.
+
+The two will be connected by wires down the back of the Achilles. The wires will need a lot of slack and to be protected with a rubber or mesh sheath.
+
+\section{Model Architecture}
+We need the ability to classify events using the data from our sensors. We need to differentiate strikes from steps using pressure and accelerometer data. Both data sources will be noisy so we should consider some data cleaning pre-model.
+
+In terms of architecture a really basic DNN should be able to do the binary classification.
+
+\begin{thebibliography}{9}
+\small
+
+\end{thebibliography}
+
+\end{document}

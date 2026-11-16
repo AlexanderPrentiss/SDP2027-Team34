@@ -1,6 +1,6 @@
 # SDP2027-Team34 wooo
 
-## Aamir: main.c, acq.c, baord.c (Aamir and Nimon parts shared w/ eachother)
+## Aamir: main.c, acq.c, board.c (Aamir and Nimon parts shared w/ eachother)
 Do the first real idf.py build of the skeleton, fix the compile errors, and get it running in Wokwi. Nobody else can test on the device until this is done.
 On the Feather, bring up the IMU: confirm the chip ID reads 0xE1 and find the I²C address.
 Prove 1 kHz sampling: overruns = 0 and max_loop well under 1000 µs. If the loop is too slow, switch the FSRs to DMA ADC reads or use the IMU’s FIFO.

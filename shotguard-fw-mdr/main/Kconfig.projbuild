@@ -1,0 +1,13 @@
+# Adds a "ShotGuard" page to `idf.py menuconfig`. Each option becomes a
+# CONFIG_... #define that the C code can test with #if.
+menu "ShotGuard"
+
+    config SHOTGUARD_SIM
+        bool "Build for the Wokwi simulator"
+        default n
+        help
+            Swaps the ICM-20649 driver for an MPU6050 (the IMU Wokwi can
+            simulate), uses sim-friendly detection thresholds, and skips the
+            Feather-only STEMMA QT power pin. GPIO numbers stay the same.
+
+endmenu

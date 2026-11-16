@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "author": "ShotGuard SDP27 Team 34",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-s3-devkitc-1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-mpu6050", "id": "imu", "top": -120, "left": 240, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "fsr_instep", "top": 220, "left": -260, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "fsr_laces", "top": 220, "left": -160, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "fsr_outside", "top": 220, "left": -60, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "fsr_toe", "top": 220, "left": 40, "attrs": {} },
+    { "type": "wokwi-microsd-card", "id": "sd", "top": 60, "left": 260, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+
+    [ "imu:VCC", "esp:3V3.1", "red", [] ],
+    [ "imu:GND", "esp:GND.1", "black", [] ],
+    [ "imu:SDA", "esp:3", "blue", [] ],
+    [ "imu:SCL", "esp:4", "yellow", [] ],
+
+    [ "fsr_instep:VCC", "esp:3V3.1", "red", [] ],
+    [ "fsr_instep:GND", "esp:GND.1", "black", [] ],
+    [ "fsr_instep:SIG", "esp:5", "green", [] ],
+    [ "fsr_laces:VCC", "esp:3V3.1", "red", [] ],
+    [ "fsr_laces:GND", "esp:GND.1", "black", [] ],
+    [ "fsr_laces:SIG", "esp:6", "green", [] ],
+    [ "fsr_outside:VCC", "esp:3V3.1", "red", [] ],
+    [ "fsr_outside:GND", "esp:GND.1", "black", [] ],
+    [ "fsr_outside:SIG", "esp:9", "green", [] ],
+    [ "fsr_toe:VCC", "esp:3V3.1", "red", [] ],
+    [ "fsr_toe:GND", "esp:GND.1", "black", [] ],
+    [ "fsr_toe:SIG", "esp:10", "green", [] ],
+
+    [ "sd:VCC", "esp:3V3.2", "red", [] ],
+    [ "sd:GND", "esp:GND.2", "black", [] ],
+    [ "sd:SCK", "esp:36", "orange", [] ],
+    [ "sd:DI", "esp:35", "purple", [] ],
+    [ "sd:DO", "esp:37", "violet", [] ],
+    [ "sd:CS", "esp:12", "gray", [] ]
+  ],
+  "dependencies": {}
+}

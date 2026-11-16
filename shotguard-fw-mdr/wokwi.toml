@@ -1,0 +1,6 @@
+# Wokwi simulator config (Wokwi for VS Code / wokwi-cli).
+# Build the simulator variant into build-sim/ first - see README.
+[wokwi]
+version = 1
+firmware = 'build-sim/flasher_args.json'
+elf = 'build-sim/shotguard.elf'
